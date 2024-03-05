@@ -1,4 +1,4 @@
-package com.example.solutionx
+package com.example.solutionx.ui
 
 import androidx.lifecycle.ViewModel
 import com.example.solutionx.data.Repository

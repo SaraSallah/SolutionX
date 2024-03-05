@@ -1,9 +1,10 @@
-package com.example.solutionx
+package com.example.solutionx.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.solutionx.R
 import com.example.solutionx.databinding.ItemRecyclerBinding
 
 class MainAdapter<T : AdapterModel>(
@@ -40,6 +41,6 @@ class MainAdapter<T : AdapterModel>(
     }
 }
 
-interface MainInteractionListener<T:AdapterModel> {
+interface MainInteractionListener<T: AdapterModel> {
     fun onClickItem(item: T)
 }

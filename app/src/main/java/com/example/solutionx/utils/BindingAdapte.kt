@@ -2,11 +2,10 @@ package com.example.solutionx.utils
 
 import android.util.Log
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.solutionx.AdapterModel
-import com.example.solutionx.MainAdapter
+import com.example.solutionx.ui.AdapterModel
+import com.example.solutionx.ui.MainAdapter
 
 
 @BindingAdapter("app:showWhenSelected")

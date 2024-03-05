@@ -1,4 +1,4 @@
-package com.example.solutionx
+package com.example.solutionx.ui
 
 import com.example.solutionx.data.model.Country
 import com.example.solutionx.data.model.Currency
