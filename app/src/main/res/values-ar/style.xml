@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextViewBold" >
+        <item name="fontFamily">@font/tajawal_bold</item>
+    </style>
+    <style name="TextViewMeduim" >
+        <item name="fontFamily">@font/tajawal_medium</item>
+    </style>
+    <style name="TextViewRegular" >
+        <item name="fontFamily">@font/tajawal_regular</item>
+    </style>
+</resources>

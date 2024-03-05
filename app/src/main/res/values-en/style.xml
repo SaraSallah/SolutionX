@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextViewBold" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/galano_grotesque_bold</item>
+    </style>
+
+    <style name="TextViewMeduim">
+        <item name="fontFamily">@font/galano_grotesque_medium</item>
+    </style>
+
+    <style name="TextViewRegular">
+        <item name="fontFamily">@font/galano_grotesque_regular</item>
+    </style>
+</resources>
