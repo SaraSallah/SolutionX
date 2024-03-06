@@ -1,5 +1,6 @@
 package com.example.solutionx.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.solutionx.data.Repository
 import com.example.solutionx.data.model.Country
@@ -25,7 +26,9 @@ class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
     private fun getAllCurrency(currencyList: List<Currency>) {
         _state.update {
             it.copy(
-                currency = currencyList.toCurrencyUiState()
+                currency = currencyList.toCurrencyUiState() ,
+                model = currencyList.toCurrencyUiState().toModelList()
+
             )
         }
 
@@ -34,7 +37,8 @@ class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
     private fun getAllCountry(countryList: List<Country>) {
         _state.update {
             it.copy(
-                country = countryList.toCountryUiState()
+                country = countryList.toCountryUiState(),
+                model = countryList.toCountryUiState().toModelList()
             )
         }
     }
@@ -42,33 +46,23 @@ class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
     private fun getAllFilter(filterList: List<Filter>) {
         _state.update {
             it.copy(
-                filter = filterList.toFilterUiState()
+                filter = filterList.toFilterUiState(),
+                model = filterList.toFilterUiState().toModelList()
             )
         }
 
     }
 
     override fun onClickItem(item: AdapterModel) {
-        val updatedState = updateSelectedItem(_state.value, item.id)
-        _state.value = updatedState
+        val updatedState = updateModel(_state.value.model, item.id)
+        _state.update { it.copy(model = updatedState) }
+        Log.e("Sara",_state.value.model.toString())
     }
-
-    private fun updateSelectedItem(
-        mainList: MainUiState,
-        selectedCurrencyId: Int,
-    ): MainUiState {
-        val currency = mainList.currency.map { currency ->
-            currency.copy(isSelected = currency.id == selectedCurrencyId)
+    fun updateModel(list :List<Model>,selectedItemId:Int):List<Model>{
+        return list.map { item ->
+            item.copy(isSelected = item.id == selectedItemId)
         }
 
-        val country = mainList.country.map { country ->
-            country.copy(isSelected = country.id == selectedCurrencyId)
-        }
-        val filter = mainList.filter.map { filter ->
-            filter.copy(isSelected = filter.id == selectedCurrencyId)
-        }
-
-        return MainUiState(currency, country, filter)
     }
 }
 

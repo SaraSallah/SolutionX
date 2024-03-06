@@ -9,7 +9,15 @@ data class MainUiState(
     val currency: List<CurrencyUiState> = emptyList(),
     val country: List<CountryUiState> = emptyList(),
     val filter: List<FilterUiState> = emptyList(),
+    val model: List<Model> = emptyList()
 )
+
+data class Model(
+    override val id: Int = 0,
+    override val name: String = " ",
+    override val isSelected: Boolean = false
+
+) : AdapterModel
 
 data class CountryUiState(
     override val id: Int = 0,
@@ -76,3 +84,13 @@ fun List<Currency>.toCurrencyUiState(): List<CurrencyUiState> {
         )
     }
 }
+fun List<AdapterModel>.toModelList(): List<Model> {
+    return map {
+        Model(
+            id = it.id,
+            name = it.name,
+            isSelected = it.isSelected,
+        )
+    }
+}
+fun AdapterModel.toModel() = Model(id = id, name = name, isSelected = isSelected)

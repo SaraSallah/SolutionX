@@ -24,7 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
-                adapter.setItems(state.filter)
+                adapter.setItems(state.currency)
+                adapter.setItems(state.model)
             }
     }
     }
