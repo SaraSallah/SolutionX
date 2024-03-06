@@ -18,8 +18,8 @@ class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
 
     init {
         getAllCurrency(repository.getAllCurrency())
-        getAllCountry(repository.getAllCountry())
-        getAllFilter(repository.getAllFilter())
+//        getAllCountry(repository.getAllCountry())
+//        getAllFilter(repository.getAllFilter())
 
     }
 

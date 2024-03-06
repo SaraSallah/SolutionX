@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
                 adapter.setItems(state.currency)
-                adapter.setItems(state.model)
+                adapter.updateDate(state.model)
             }
         }
         Logger.log("This is a LogCat message")
