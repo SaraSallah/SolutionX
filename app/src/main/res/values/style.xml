@@ -5,11 +5,11 @@
         <item name="fontFamily">@font/galano_grotesque_bold</item>
     </style>
 
-    <style name="TextViewMeduim">
+    <style name="TextViewMeduim" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/galano_grotesque_medium</item>
     </style>
 
-    <style name="TextViewRegular">
+    <style name="TextViewRegular" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/galano_grotesque_regular</item>
     </style>
 </resources>

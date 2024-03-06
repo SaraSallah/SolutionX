@@ -7,6 +7,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.solutionx.R
 import com.example.solutionx.databinding.ActivityMainBinding
+import com.example.solutionx.utils.Logger
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -24,10 +25,15 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launchWhenStarted {
             viewModel.state.collect { state ->
-                adapter.setItems(state.filter)
+                adapter.setItems(state.currency)
+                adapter.setItems(state.model)
             }
+        }
+        Logger.log("This is a LogCat message")
+
+
     }
-    }
+
 
 }
 

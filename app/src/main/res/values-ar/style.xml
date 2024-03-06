@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="TextViewBold" >
+    <style name="TextViewBold" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/tajawal_bold</item>
     </style>
-    <style name="TextViewMeduim" >
+
+    <style name="TextViewMeduim" parent="Widget.AppCompat.TextView">
         <item name="fontFamily">@font/tajawal_medium</item>
     </style>
-    <style name="TextViewRegular" >
-        <item name="fontFamily">@font/tajawal_regular</item>
+
+    <style name="TextViewRegular" parent="Widget.AppCompat.TextView">
+    <item name="fontFamily">@font/tajawal_regular</item>
     </style>
+
 </resources>
