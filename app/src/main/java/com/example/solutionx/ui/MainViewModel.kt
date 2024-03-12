@@ -3,9 +3,9 @@ package com.example.solutionx.ui
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.solutionx.data.Repository
-import com.example.solutionx.data.model.Country
-import com.example.solutionx.data.model.Currency
-import com.example.solutionx.data.model.Filter
+import com.example.solutionx.data.models.Entity.Country
+import com.example.solutionx.data.models.Entity.Currency
+import com.example.solutionx.data.models.Entity.Filter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

@@ -1,8 +1,8 @@
 package com.example.solutionx.data
 
-import com.example.solutionx.data.model.Country
-import com.example.solutionx.data.model.Currency
-import com.example.solutionx.data.model.Filter
+import com.example.solutionx.data.models.Entity.Country
+import com.example.solutionx.data.models.Entity.Currency
+import com.example.solutionx.data.models.Entity.Filter
 import com.google.gson.Gson
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken

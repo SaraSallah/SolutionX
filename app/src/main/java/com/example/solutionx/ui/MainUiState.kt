@@ -1,8 +1,8 @@
 package com.example.solutionx.ui
 
-import com.example.solutionx.data.model.Country
-import com.example.solutionx.data.model.Currency
-import com.example.solutionx.data.model.Filter
+import com.example.solutionx.data.models.Entity.Country
+import com.example.solutionx.data.models.Entity.Currency
+import com.example.solutionx.data.models.Entity.Filter
 
 
 data class MainUiState(
