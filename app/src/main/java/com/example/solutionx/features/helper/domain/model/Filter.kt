@@ -1,4 +1,4 @@
-package com.example.solutionx.features.helper.data.Entity
+package com.example.solutionx.features.helper.domain.model
 
 data class Filter(
     val id: Int,

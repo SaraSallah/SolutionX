@@ -1,23 +1,37 @@
 package com.example.solutionx.features.helper.presentation
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.solutionx.features.helper.data.Repository
-import com.example.solutionx.features.login.data.models.Entity.Country
-import com.example.solutionx.features.login.data.models.Entity.Currency
-import com.example.solutionx.features.login.data.models.Entity.Filter
+import com.example.solutionx.features.helper.MainActivity
+import com.example.solutionx.features.helper.data.repository.RepositoryImp
+import com.example.solutionx.features.helper.domain.model.Country
+import com.example.solutionx.features.helper.domain.model.Currency
+import com.example.solutionx.features.helper.domain.model.Filter
+import com.example.solutionx.features.helper.domain.repository.Repository
+import com.example.solutionx.features.helper.domain.usecase.GetAllCountriesUseCase
+import com.example.solutionx.features.helper.domain.usecase.GetAllCurrenciesUseCase
+import com.example.solutionx.features.helper.domain.usecase.GetAllFiltersUseCase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ActivityContext
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-
-class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
+import javax.inject.Inject
+@HiltViewModel
+class MainViewModel @Inject constructor(
+    private val getAllCountriesUseCase: GetAllCountriesUseCase ,
+    private val getAllCurrenciesUseCase: GetAllCurrenciesUseCase ,
+    private val getAllFiltersUseCase: GetAllFiltersUseCase
+): ViewModel(), MainInteractionListener<AdapterModel> {
 
     private val _state = MutableStateFlow(MainUiState())
     val state = _state.asStateFlow()
-    val repository = Repository()
-
+    private val _context = MutableStateFlow<Context?>(null)
+    val context =_context.asStateFlow()
     init {
-        getAllCurrency(repository.getAllCurrency())
+        getAllCurrency(getAllCurrenciesUseCase.invoke(context.value!!.applicationContext))
 //        getAllCountry(repository.getAllCountry())
 //        getAllFilter(repository.getAllFilter())
 

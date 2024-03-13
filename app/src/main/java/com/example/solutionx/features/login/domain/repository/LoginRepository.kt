@@ -2,7 +2,7 @@ package com.example.solutionx.features.login.domain.repository
 
 import com.example.solutionx.features.login.domain.model.Login
 
-interface Repository {
+interface LoginRepository {
     fun loginWithEmail(email: String, password: String): Login
     fun loginWithPhone(phone: String): Login
     fun loginWithSocial(socialAcc: String): Login

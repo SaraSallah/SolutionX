@@ -3,14 +3,14 @@ package com.example.solutionx.features.login.data.repository
 import com.example.solutionx.features.login.data.mapper.toLogin
 import com.example.solutionx.features.login.data.mapper.toUserEntity
 import com.example.solutionx.features.login.domain.model.Login
-import com.example.solutionx.features.login.domain.repository.Repository
+import com.example.solutionx.features.login.domain.repository.LoginRepository
 import com.example.solutionx_arch.data.models.Entity.User
 import javax.inject.Inject
 
-class RepositoryImp @Inject constructor(
+class LoginRepositoryImp @Inject constructor(
     private val remoteDS: RemoteDSImp,
     private val localDS :  LocalDSImp ,
-) : Repository {
+) : LoginRepository {
     override fun loginWithEmail(email: String, password: String): Login =
         remoteDS.loginWithEmail(email, password).toLogin()
 

@@ -1,8 +1,8 @@
 package com.example.solutionx.features.helper.presentation
 
-import com.example.solutionx.features.login.data.models.Entity.Country
-import com.example.solutionx.features.login.data.models.Entity.Currency
-import com.example.solutionx.features.login.data.models.Entity.Filter
+import com.example.solutionx.features.helper.domain.model.Country
+import com.example.solutionx.features.helper.domain.model.Currency
+import com.example.solutionx.features.helper.domain.model.Filter
 
 
 data class MainUiState(

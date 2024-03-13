@@ -1,4 +1,4 @@
-package com.example.solutionx.features.login.data.models.Entity
+package com.example.solutionx.features.helper.data.Entity
 
 data class Currency(
     val id: Int,

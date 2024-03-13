@@ -29,8 +29,10 @@ class MainActivity : AppCompatActivity() {
             viewModel.state.collect { state ->
                 adapter.setItems(state.currency)
                 adapter.updateDate(state.model)
+                applicationContext.applicationContext
             }
         }
+
         Logger.log("This is a LogCat message")
 
 
