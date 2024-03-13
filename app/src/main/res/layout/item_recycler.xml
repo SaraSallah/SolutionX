@@ -6,11 +6,11 @@
     <data>
         <variable
             name="item"
-            type="com.example.solutionx.ui.Model" />
+            type="com.example.solutionx.features.helper.presentation.Model" />
 
         <variable
             name="listener"
-            type="com.example.solutionx.ui.MainInteractionListener" />
+            type="com.example.solutionx.features.helper.presentation.MainInteractionListener" />
 
     </data>
     <androidx.cardview.widget.CardView

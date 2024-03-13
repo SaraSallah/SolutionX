@@ -1,11 +1,11 @@
-package com.example.solutionx.ui
+package com.example.solutionx.features.helper.presentation
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
-import com.example.solutionx.data.Repository
-import com.example.solutionx.data.models.Entity.Country
-import com.example.solutionx.data.models.Entity.Currency
-import com.example.solutionx.data.models.Entity.Filter
+import com.example.solutionx.features.helper.data.Repository
+import com.example.solutionx.features.login.data.models.Entity.Country
+import com.example.solutionx.features.login.data.models.Entity.Currency
+import com.example.solutionx.features.login.data.models.Entity.Filter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -58,7 +58,7 @@ class MainViewModel : ViewModel(), MainInteractionListener<AdapterModel> {
         _state.update { it.copy(model = updatedState) }
         Log.e("Sara",_state.value.model.toString())
     }
-    fun updateModel(list :List<Model>,selectedItemId:Int):List<Model>{
+    fun updateModel(list :List<Model>, selectedItemId:Int):List<Model>{
         return list.map { item ->
             item.copy(isSelected = item.id == selectedItemId)
         }

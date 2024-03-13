@@ -1,8 +1,8 @@
-package com.example.solutionx.ui
+package com.example.solutionx.features.helper.presentation
 
-import com.example.solutionx.data.models.Entity.Country
-import com.example.solutionx.data.models.Entity.Currency
-import com.example.solutionx.data.models.Entity.Filter
+import com.example.solutionx.features.login.data.models.Entity.Country
+import com.example.solutionx.features.login.data.models.Entity.Currency
+import com.example.solutionx.features.login.data.models.Entity.Filter
 
 
 data class MainUiState(

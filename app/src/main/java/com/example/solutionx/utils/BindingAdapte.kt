@@ -4,8 +4,8 @@ import android.util.Log
 import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.solutionx.ui.AdapterModel
-import com.example.solutionx.ui.MainAdapter
+import com.example.solutionx.features.helper.presentation.AdapterModel
+import com.example.solutionx.features.helper.presentation.MainAdapter
 
 
 @BindingAdapter("app:showWhenSelected")

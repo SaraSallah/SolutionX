@@ -1,4 +1,4 @@
-package com.example.solutionx.ui
+package com.example.solutionx.features.helper
 
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -7,6 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.solutionx.R
 import com.example.solutionx.databinding.ActivityMainBinding
+import com.example.solutionx.features.helper.presentation.MainAdapter
+import com.example.solutionx.features.helper.presentation.MainViewModel
 import com.example.solutionx.utils.Logger
 
 class MainActivity : AppCompatActivity() {

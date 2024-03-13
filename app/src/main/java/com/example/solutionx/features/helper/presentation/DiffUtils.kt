@@ -1,4 +1,4 @@
-package com.example.solutionx.ui
+package com.example.solutionx.features.helper.presentation
 
 import androidx.recyclerview.widget.DiffUtil
 
