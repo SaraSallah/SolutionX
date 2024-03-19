@@ -27,12 +27,3 @@ internal abstract class  HelperRepositoryModule {
     ): HelperRepository
 }
 
-@Module
-@InstallIn(SingletonComponent::class)
-internal abstract class NetworkBindingsModule {
-    @Singleton
-    @Binds
-    abstract fun bindRemoteDataSource(helperLocalDSImp: HelperLocalDSImp): HelperLocalDs
-
-}
-

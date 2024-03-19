@@ -27,13 +27,4 @@ internal abstract class LoginRepositoryModule {
         loginRepositoryImp: LoginRepositoryImp
     ): LoginRepository
 }
-@Module
-@InstallIn(SingletonComponent::class)
-internal abstract class DataBindingsModule {
-    @Singleton
-    @Binds
-    abstract fun bindRemoteDataSource(remoteDSImp: RemoteDSImp): RemoteDS
-    @Singleton
-    @Binds
-    abstract fun bindLocalDataSource(localDSImp: LocalDSImp): LocalDS
-}
+
