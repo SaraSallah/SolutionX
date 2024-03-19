@@ -1,6 +1,7 @@
 package com.example.solutionx.features.helper
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -10,7 +11,9 @@ import com.example.solutionx.databinding.ActivityMainBinding
 import com.example.solutionx.features.helper.presentation.MainAdapter
 import com.example.solutionx.features.helper.presentation.MainViewModel
 import com.example.solutionx.utils.Logger
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModels()
@@ -29,11 +32,11 @@ class MainActivity : AppCompatActivity() {
             viewModel.state.collect { state ->
                 adapter.setItems(state.currency)
                 adapter.updateDate(state.model)
-                applicationContext.applicationContext
             }
         }
 
         Logger.log("This is a LogCat message")
+        Log.e("",viewModel.state.value.currency.toString())
 
 
     }

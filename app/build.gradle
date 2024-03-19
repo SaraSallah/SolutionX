@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 
 }
 
@@ -73,5 +74,14 @@ dependencies {
     // hilt dependency
     implementation 'com.google.dagger:hilt-android:2.48'
     kapt 'com.google.dagger:hilt-compiler:2.48'
+    //Coroutines
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3"
 
+
+
+
+}
+hilt {
+    enableAggregatingTask = true
 }

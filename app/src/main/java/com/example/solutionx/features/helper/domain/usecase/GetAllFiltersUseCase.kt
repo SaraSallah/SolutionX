@@ -2,12 +2,12 @@ package com.example.solutionx.features.helper.domain.usecase
 
 import android.content.Context
 import com.example.solutionx.features.helper.domain.model.Filter
-import com.example.solutionx.features.helper.domain.repository.Repository
+import com.example.solutionx.features.helper.domain.repository.HelperRepository
 import javax.inject.Inject
 
 class GetAllFiltersUseCase @Inject constructor(
-    private val repository: Repository,
+    private val repository: HelperRepository,
 ) {
-    operator fun invoke(context: Context): List<Filter> = repository.getAllFilters(context)
+    operator fun invoke(): List<Filter> = repository.getAllFilters()
 
 }
