@@ -1,5 +1,6 @@
 package com.example.solutionx.features.login.domain.usecase
 
+import android.util.Log
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.LoginRepository
@@ -20,6 +21,8 @@ class LoginWithPhoneUseCase @Inject constructor(
             )
             val token = request.accessToken
             repository.saveAccessToken(token.orEmpty())
+            Log.e("ٍSara", "${token}")
+
 //            repository.saveUserInfo(token)
             return@wrapWithFlow request.userInfo
 

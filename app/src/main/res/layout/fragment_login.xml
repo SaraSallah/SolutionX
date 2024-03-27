@@ -7,6 +7,9 @@
         <variable
             name="viewModel"
             type="com.example.solutionx.features.login.presenter.LoginViewModel" />
+        <variable
+            name="listener"
+            type="com.example.solutionx.features.login.presenter.LoginInteractionListener" />
 
     </data>
 
@@ -15,34 +18,34 @@
         android:layout_height="match_parent"
         tools:context=".features.login.presenter.LoginFragment">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:hint="phoneNumber"
-            android:text="@{viewModel.state.phoneNumber}"
+            android:afterTextChanged="@{(text)->viewModel.onPhoneNumberInputChange(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_country_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="country code"
-            android:text="@{viewModel.state.countryCode}"
+            android:afterTextChanged="@{(text)->viewModel.onCountryCodeInputChanged(text)}"
             android:layout_margin="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_phone_number"
             />
-        <EditText
+        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="passsword"
             android:layout_margin="16dp"
-            android:text="@{viewModel.state.password}"
+            android:afterTextChanged="@{(text)->viewModel.onPasswordInputChanged(text)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_country_code"
@@ -53,7 +56,7 @@
             android:layout_height="wrap_content"
             android:text="Login"
             android:layout_margin="16dp"
-            android:onClick="@{()-> viewModel.onClickLogin()}"
+            android:onClick="@{()->listener.onClickLogin()}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_password" />

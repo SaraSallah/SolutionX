@@ -1,5 +1,6 @@
 package com.example.solutionx.utils
 
+import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.Response
@@ -28,10 +29,14 @@ fun <T> wrapWithFlow(function: suspend () -> T): Flow<Resources<T>> {
         try {
             val result = function()
             emit(Resources.Success(result))
+            Log.e("ٍSara", "Succeess")
             emit(Resources.Loading(false))
+
 
         } catch (e: Exception) {
             emit(Resources.Failure(getExceptionType(e)))
+            Log.e("ٍSara", "error ${e.message}")
+
             emit(Resources.Loading(false))
 
         }
