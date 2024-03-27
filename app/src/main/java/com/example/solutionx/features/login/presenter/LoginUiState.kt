@@ -6,10 +6,9 @@ data class LoginUiState(
     val isLoading: Boolean = false,
     val isError: Boolean = false,
     val userInfo: UserUiState = UserUiState(),
-    val email : String ="",
+    val phoneNumber : String ="",
+    val countryCode : String = "",
     val password : String = "",
-    val socialAcc : String ="",
-    val phone : String ="",
 )
 
 data class UserUiState(

@@ -1,6 +1,8 @@
 package com.example.solutionx.features.login.domain.model
 
-data class Login (
-    val accessToken : String ? = null,
-    val userInfo : User? = null,
+import com.example.solutionx.features.login.data.models.dto.UserInfoDto
+
+data class Login(
+    val accessToken: String ? = null,
+    val userInfo: User? = null,
 )

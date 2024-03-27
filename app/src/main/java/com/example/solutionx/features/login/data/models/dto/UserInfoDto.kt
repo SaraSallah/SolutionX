@@ -1,8 +1,8 @@
-package com.example.solutionx_arch.data.models.Dto
+package com.example.solutionx.features.login.data.models.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class UserInfoDto(
+ data class UserInfoDto(
     @SerializedName("id")
     val id: Int? = null,
     @SerializedName("name")

@@ -1,6 +1,5 @@
-package com.example.solutionx.features.login.data.models.Dto
+package com.example.solutionx.features.login.data.models.dto
 
-import com.example.solutionx_arch.data.models.Dto.UserInfoDto
 import com.google.gson.annotations.SerializedName
 
 data class LoginResponseDto(

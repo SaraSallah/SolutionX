@@ -1,6 +1,6 @@
-package com.example.solutionx_arch.data.models.Entity
+package com.example.solutionx.features.login.data.models.entity
 
-data class User(
+data class UserEntity(
     val id: Int? = null,
     val name: String? = null,
     val email: String? = null,

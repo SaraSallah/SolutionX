@@ -23,7 +23,8 @@ class LoginFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
+        binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_login, container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
             binding.viewModel = viewModel

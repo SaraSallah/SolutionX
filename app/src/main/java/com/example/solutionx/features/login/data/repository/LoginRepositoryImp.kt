@@ -1,30 +1,33 @@
 package com.example.solutionx.features.login.data.repository
 
-import com.example.solutionx.features.login.data.mapper.toLogin
-import com.example.solutionx.features.login.data.mapper.toUserEntity
+import com.example.solutionx.features.login.data.mapper.LoginMapper
+import com.example.solutionx.features.login.data.mapper.UserMapper
+import com.example.solutionx.features.login.data.models.entity.UserEntity
 import com.example.solutionx.features.login.domain.model.Login
-import com.example.solutionx.features.login.domain.repository.LocalDS
 import com.example.solutionx.features.login.domain.repository.LoginRepository
-import com.example.solutionx.features.login.domain.repository.RemoteDS
-import com.example.solutionx_arch.data.models.Entity.User
-import javax.inject.Inject
+import com.example.solutionx.features.login.domain.repository.local.LoginLocalDS
+import com.example.solutionx.features.login.domain.repository.remote.LoginRemoteDS
 
-class LoginRepositoryImp @Inject constructor(
-    private val remoteDS: RemoteDS,
-    private val localDS : LocalDS,
+internal class LoginRepositoryImp(
+    private val remoteDS: LoginRemoteDS,
+    private val localDS: LoginLocalDS,
 ) : LoginRepository {
     override suspend fun loginWithEmail(email: String, password: String): Login =
-        remoteDS.loginWithEmail(email, password).toLogin()
+        LoginMapper.mapToDomain(remoteDS.loginWithEmail(email, password))
 
-    override suspend fun loginWithPhone(phone: String): Login =
-        remoteDS.loginWithPhone(phone).toLogin()
+    override suspend fun loginWithPhone(
+        countryCode: String,
+        phone: String,
+        password: String,
+    ): Login =
+        LoginMapper.mapToDomain(remoteDS.loginWithPhone(countryCode, phone, password))
 
     override suspend fun loginWithSocial(socialAcc: String): Login =
-        remoteDS.loginWithSocial(socialAcc).toLogin()
+        LoginMapper.mapToDomain(remoteDS.loginWithSocial(socialAcc))
 
-    override suspend fun saveAccessToken(token: String?): Boolean =
+    override suspend fun saveAccessToken(token: String) =
         localDS.saveAccessToken(token)
 
-    override suspend fun saveUserInfo(token: String?): User =
-        localDS.getUserInfo(token).toUserEntity()
+//    override suspend fun getUserInfo(token: String?): UserEntity =
+//        UserMapper.mapToEntity(localDS.getUserInfo(token))
 }

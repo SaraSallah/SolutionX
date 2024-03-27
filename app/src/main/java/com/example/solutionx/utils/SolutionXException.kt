@@ -7,38 +7,51 @@ import java.io.IOException
 import java.sql.SQLException
 
 
-open class SolutionXException(message: String? = null)
-    : Exception(message)
+sealed class SolutionXException(message: String? = null) : Exception(message){
+    data class NetworkException(override val message: String?) : SolutionXException()
+
+    data class DatabaseException(override val message: String?) : SolutionXException()
+    data class NotFoundException (override val message: String?) : SolutionXException()
+    data class UnAuthorizedException (override val message: String?) : SolutionXException()
+
+    data class ApiException(override val message: String?) : SolutionXException()
+
+}
 
 
 
-class NetworkException(override val message: String?) : SolutionXException()
 
-class DatabaseException(override val message: String?) : SolutionXException()
-class NotFoundException (override val message: String?) : SolutionXException()
-class UnAuthorizedException (override val message: String?) : SolutionXException()
-
-class ApiException(override val message: String?) : SolutionXException()
 
 fun <T> wrapWithFlow(function: suspend () -> T): Flow<Resources<T>> {
     return flow {
-        emit(Resources.Loading)
+        emit(Resources.Loading(true))
         try {
             val result = function()
             emit(Resources.Success(result))
+            emit(Resources.Loading(false))
+
         } catch (e: Exception) {
             emit(Resources.Failure(getExceptionType(e)))
+            emit(Resources.Loading(false))
 
-            }
+        }
         }
     }
 fun getExceptionType(e :Exception) :SolutionXException{
     return when(e){
-        is IOException -> NetworkException("Network error occurred")
-        is SQLException -> DatabaseException(e.message)
-        is android.content.res.Resources.NotFoundException -> NotFoundException(" Not Found Exception")
-        else -> ApiException(e.message)
+        is IOException -> SolutionXException.NetworkException("Network error occurred")
+        is SQLException -> SolutionXException.DatabaseException(e.message)
+        is android.content.res.Resources.NotFoundException -> SolutionXException.NotFoundException(" Not Found Exception")
+        else -> SolutionXException.ApiException(e.message)
     }
+
+}
+fun getResponseType(response: Response):SolutionXException{
+    return when(response.code){
+        ( 502) -> SolutionXException.NetworkException("")
+        else ->SolutionXException.NotFoundException("")
+    }
+
 }
 
 

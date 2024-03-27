@@ -13,8 +13,8 @@ class LoginWithEmailUseCase @Inject constructor(
         return wrapWithFlow {
             val request = repository.loginWithEmail(email, password)
             val token = request.accessToken
-            repository.saveAccessToken(token)
-            repository.saveUserInfo(token)
+            repository.saveAccessToken(token.orEmpty())
+//            repository.saveUserInfo(token)
             return@wrapWithFlow request.userInfo
         }
     }
