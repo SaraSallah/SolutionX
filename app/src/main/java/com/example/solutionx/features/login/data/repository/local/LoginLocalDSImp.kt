@@ -6,7 +6,7 @@ import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.local.LoginLocalDS
 import javax.inject.Inject
 
-internal class LoginLocalDSImp @Inject constructor(
+internal class LoginLocalDSImp (
     private val loginDataStorePreferences: LoginDataStorePreferences
 ) : LoginLocalDS {
     override suspend fun saveAccessToken(token: String) =
@@ -15,4 +15,7 @@ internal class LoginLocalDSImp @Inject constructor(
     override suspend fun saveUserInfo(user: UserEntity) {
         loginDataStorePreferences.saveUserInfo(user)
     }
+
+    override suspend fun getUSerInfo(): UserEntity =
+        loginDataStorePreferences.getUSerInfo()
 }

@@ -15,7 +15,7 @@ class LoginWithSocialUseCase @Inject constructor(
             val request = repository.loginWithSocial(socialAcc)
             val token = request.accessToken
             repository.saveAccessToken(token.orEmpty())
-//            repository.saveUserInfo(token)
+            repository.saveUserInfo(request.userInfo)
             return@wrapWithFlow request.userInfo
 
         }

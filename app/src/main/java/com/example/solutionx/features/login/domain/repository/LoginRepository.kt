@@ -11,7 +11,7 @@ interface LoginRepository {
     suspend fun loginWithSocial(socialAcc: String): Login
     suspend fun saveAccessToken(token: String)
     suspend fun saveUserInfo(user: User)
-//    suspend fun getUserInfo(token: String?): UserEntity
+    suspend fun getUserInfo(): UserEntity
 
 
 }

@@ -10,7 +10,7 @@ import com.example.solutionx.utils.getResponseType
 import retrofit2.Response
 import javax.inject.Inject
 
-internal class LoginRemoteDSImp @Inject constructor(
+internal class LoginRemoteDSImp (
     private val loginServices: ApiServices,
 ) : LoginRemoteDS {
     override suspend fun loginWithEmail(email: String, password: String):

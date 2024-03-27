@@ -2,6 +2,7 @@ package com.example.solutionx.features.login.data.repository
 
 import com.example.solutionx.features.login.data.mapper.LoginMapper
 import com.example.solutionx.features.login.data.mapper.UserMapper
+import com.example.solutionx.features.login.data.models.entity.UserEntity
 import com.example.solutionx.features.login.domain.model.Login
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.model.User
@@ -26,7 +27,6 @@ internal class LoginRepositoryImp(
     override suspend fun saveAccessToken(token: String) =
         localDS.saveAccessToken(token)
 
-//    override suspend fun getUserInfo(token: String?): UserEntity =
-//        UserMapper.mapToEntity(localDS.saveUserInfo(token))
-override suspend fun saveUserInfo(user: User) = localDS.saveUserInfo(UserMapper.mapToEntity(user))
+    override suspend fun saveUserInfo(user: User) = localDS.saveUserInfo(UserMapper.mapToEntity(user))
+    override suspend fun getUserInfo(): UserEntity = localDS.getUSerInfo()
 }

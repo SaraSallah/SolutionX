@@ -7,14 +7,17 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.solutionx.features.login.data.models.entity.UserEntity
 import com.example.solutionx.features.login.domain.repository.local.LoginLocalDS
+import com.example.solutionx.utils.Constant
 import com.google.gson.Gson
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.map
 
 class LoginDataStorePreferences (context: Context):LoginLocalDS {
     companion object {
-        private const val PREFERENCES_FILE_NAME = "SolutionX"
+        private const val PREFERENCES_FILE_NAME = Constant.DATA_STORE_FILE
         private val ACCESS_TOKE_KEY =
-            stringPreferencesKey("access_token")
-        private val USER_INFO_KEY = stringPreferencesKey("user_info")
+            stringPreferencesKey(Constant.ACCESS_TOKEN_KEY)
+        private val USER_INFO_KEY = stringPreferencesKey(Constant.USER_INFO_KEY)
     }
      private var storedAccessToken: String? = null
 
@@ -30,15 +33,22 @@ class LoginDataStorePreferences (context: Context):LoginLocalDS {
         }
 
     }
-
     override suspend fun saveUserInfo(user: UserEntity) {
         val gson = Gson()
         val userGson = gson.toJson(user)
 
         prefDataStore.edit { preferences ->
-            preferences[ACCESS_TOKE_KEY] = userGson
+            preferences[USER_INFO_KEY] = userGson
         }
 
+    }
+
+    override suspend fun getUSerInfo(): UserEntity {
+        val userGson = prefDataStore.data.map {
+            it[USER_INFO_KEY]
+        }.first()
+        val gson = Gson()
+        return gson.fromJson(userGson, UserEntity::class.java)
     }
 
 

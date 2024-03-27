@@ -52,12 +52,9 @@ class LoginViewModel @Inject constructor(
 
                     is Resources.Failure -> {
                         _state.update { it.copy(isError = true) }
-                        Log.e("ٍSara", "Login failed")
+
                     }
-
                 }
-
-
                 }
             }
         }

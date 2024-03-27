@@ -7,5 +7,6 @@ import com.example.solutionx.features.login.domain.model.User
 internal interface LoginLocalDS {
     suspend fun saveAccessToken(token: String)
     suspend fun saveUserInfo(user: UserEntity)
+    suspend fun getUSerInfo():UserEntity
 
 }

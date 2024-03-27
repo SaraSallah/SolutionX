@@ -1,6 +1,7 @@
 package com.example.solutionx.features.login.presenter
 
 import com.example.solutionx.features.login.domain.model.User
+import com.example.solutionx.utils.SolutionXException
 
 data class LoginUiState(
     val isLoading: Boolean = false,

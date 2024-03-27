@@ -1,6 +1,7 @@
 package com.example.solutionx.common.di
 
 import com.example.solutionx.common.data.repository.remote.ApiServices
+import com.example.solutionx.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +15,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-    private const val BASE_URL = "https://dev.api.altashirat.solutionplus.net/api/"
 
     @Provides
     @Singleton
@@ -23,7 +23,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory,
     ): Retrofit = Retrofit
         .Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(Constant.BASEURL)
         .client(okHttpClient)
         .addConverterFactory(gsonConverterFactory)
         .build()
