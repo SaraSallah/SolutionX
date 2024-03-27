@@ -20,7 +20,6 @@ internal class LoginRemoteDSImp (
         loginRequest: LoginRequest
     ): LoginDto? {
         val request = loginServices.loginWithPhone(loginRequest)
-//            getResponseType(request.code())
         return request.body()
     }
 

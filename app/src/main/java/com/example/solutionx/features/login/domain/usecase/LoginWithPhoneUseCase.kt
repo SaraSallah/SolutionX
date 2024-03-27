@@ -17,6 +17,7 @@ class LoginWithPhoneUseCase (
             val token = request.accessToken
             repository.saveAccessToken(token)
             repository.saveUserInfo(request.userInfo)
+            Log.e("Sara",repository.getUserInfo().toString())
             return@wrapWithFlow request.userInfo
 
         }
