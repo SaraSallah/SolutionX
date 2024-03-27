@@ -14,16 +14,10 @@ class LoginWithPhoneUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(loginRequest: LoginRequest): Flow<Resources<User?>> {
         return wrapWithFlow {
-            val request = repository.loginWithPhone(
-                loginRequest.countryCode,
-                loginRequest.phoneNumber,
-                loginRequest.password
-            )
+            val request = repository.loginWithPhone(loginRequest)
             val token = request.accessToken
-            repository.saveAccessToken(token.orEmpty())
-            Log.e("ٍSara", "${token}")
-
-//            repository.saveUserInfo(token)
+            repository.saveAccessToken(token)
+            repository.saveUserInfo(request.userInfo)
             return@wrapWithFlow request.userInfo
 
         }

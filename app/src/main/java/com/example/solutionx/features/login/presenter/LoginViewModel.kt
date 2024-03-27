@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.solutionx.features.login.domain.model.LoginRequest
+import com.example.solutionx.features.login.domain.model.Phone
 import com.example.solutionx.features.login.domain.usecase.LoginWithEmailUseCase
 import com.example.solutionx.features.login.domain.usecase.LoginWithPhoneUseCase
 import com.example.solutionx.features.login.domain.usecase.LoginWithSocialUseCase
@@ -20,9 +21,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginWithEmailUseCase: LoginWithEmailUseCase,
     private val loginWithPhoneUseCase: LoginWithPhoneUseCase,
-    private val loginWithSocialUseCase: LoginWithSocialUseCase,
 ) : ViewModel(),LoginInteractionListener {
 
     private val _state = MutableStateFlow(LoginUiState())
@@ -34,22 +33,20 @@ class LoginViewModel @Inject constructor(
 
      override fun onClickLogin() {
          loginWithPhoneNumber()
-    }
+
+     }
 
     private fun loginWithPhoneNumber() {
         viewModelScope.launch(Dispatchers.IO) {
-            val loginRequest = LoginRequest(
-                _state.value.countryCode.trim(),
-                _state.value.phoneNumber.trim(),
-                _state.value.password.trim()
+            val loginRequest = LoginRequest(phone = Phone("0020","100100100"),"123456789"
             )
+
             loginWithPhoneUseCase.invoke(loginRequest).collect { resource ->
                 when (resource) {
                     is Resources.Loading -> _state.update { it.copy(isLoading = true) }
                     is Resources.Success -> {
 
                         _effect.emit(LoginUiEffect.onClickLoginEffect)
-                        Log.e("ٍSara", "Login Sucecce")
 
                     }
 

@@ -22,42 +22,20 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
     private val viewModel: LoginViewModel by viewModels()
-    lateinit var  binding: FragmentLoginBinding
-
+    lateinit var binding: FragmentLoginBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
-        binding = DataBindingUtil.inflate(inflater,
-            R.layout.fragment_login, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container, false)
         binding.apply {
             lifecycleOwner = viewLifecycleOwner
-            binding.viewModel = viewModel
-            return root
+            viewModel = this@LoginFragment.viewModel
+            executePendingBindings()
+        }
+        return binding.root
+    }
 
-        }
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        collectEffect()
-    }
-    private fun collectEffect(){
-        collect(viewModel.effect){effect->
-            effect.apply {
-                Toast.makeText(requireContext(),"Login",Toast.LENGTH_LONG).show()
-            }
-        }
-    }
-    fun <T> LifecycleOwner.collect(flow: Flow<T>, action: suspend (T) -> Unit) {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                flow.collect {
-                    action.invoke(it)
-                }
-            }
-        }
-    }
 }

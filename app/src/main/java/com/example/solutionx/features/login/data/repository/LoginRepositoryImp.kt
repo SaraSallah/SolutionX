@@ -2,8 +2,9 @@ package com.example.solutionx.features.login.data.repository
 
 import com.example.solutionx.features.login.data.mapper.LoginMapper
 import com.example.solutionx.features.login.data.mapper.UserMapper
-import com.example.solutionx.features.login.data.models.entity.UserEntity
 import com.example.solutionx.features.login.domain.model.Login
+import com.example.solutionx.features.login.domain.model.LoginRequest
+import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.LoginRepository
 import com.example.solutionx.features.login.domain.repository.local.LoginLocalDS
 import com.example.solutionx.features.login.domain.repository.remote.LoginRemoteDS
@@ -16,11 +17,8 @@ internal class LoginRepositoryImp(
         LoginMapper.mapToDomain(remoteDS.loginWithEmail(email, password))
 
     override suspend fun loginWithPhone(
-        countryCode: String,
-        phone: String,
-        password: String,
-    ): Login =
-        LoginMapper.mapToDomain(remoteDS.loginWithPhone(countryCode, phone, password))
+        loginRequest: LoginRequest
+    ): Login = LoginMapper.mapToDomain(remoteDS.loginWithPhone(loginRequest))
 
     override suspend fun loginWithSocial(socialAcc: String): Login =
         LoginMapper.mapToDomain(remoteDS.loginWithSocial(socialAcc))
@@ -29,5 +27,6 @@ internal class LoginRepositoryImp(
         localDS.saveAccessToken(token)
 
 //    override suspend fun getUserInfo(token: String?): UserEntity =
-//        UserMapper.mapToEntity(localDS.getUserInfo(token))
+//        UserMapper.mapToEntity(localDS.saveUserInfo(token))
+override suspend fun saveUserInfo(user: User) = localDS.saveUserInfo(UserMapper.mapToEntity(user))
 }

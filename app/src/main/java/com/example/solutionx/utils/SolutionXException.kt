@@ -1,6 +1,7 @@
 package com.example.solutionx.utils
 
 import android.util.Log
+import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.Response
@@ -35,7 +36,6 @@ fun <T> wrapWithFlow(function: suspend () -> T): Flow<Resources<T>> {
 
         } catch (e: Exception) {
             emit(Resources.Failure(getExceptionType(e)))
-            Log.e("ٍSara", "error ${e.message}")
 
             emit(Resources.Loading(false))
 
@@ -51,8 +51,8 @@ fun getExceptionType(e :Exception) :SolutionXException{
     }
 
 }
-fun getResponseType(response: Response):SolutionXException{
-    return when(response.code){
+fun getResponseType(httpStatusCode: Int):SolutionXException{
+    return when(httpStatusCode){
         ( 502) -> SolutionXException.NetworkException("")
         else ->SolutionXException.NotFoundException("")
     }
