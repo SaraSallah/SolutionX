@@ -27,9 +27,9 @@ internal class LoginRemoteDSImp (
     fun getResponseType(httpStatusCode: Int): SolutionXException {
         return when(httpStatusCode){
             ( 402) -> {
-                SolutionXException.NetworkException("hhhhhhh")
+                SolutionXException.NetworkException("network error")
             }
-            else -> SolutionXException.NotFoundException("")
+            else -> SolutionXException.NotFoundException(" not found error")
         }
 
     }

@@ -1,9 +1,9 @@
 package com.example.solutionx.features.login.di
 
 import android.content.Context
+import com.example.solutionx.common.data.repository.local.DataStorePreferences
 import com.example.solutionx.common.data.repository.remote.ApiServices
 import com.example.solutionx.features.login.data.repository.LoginRepositoryImp
-import com.example.solutionx.features.login.data.repository.local.LoginDataStorePreferences
 import com.example.solutionx.features.login.data.repository.local.LoginLocalDSImp
 import com.example.solutionx.features.login.data.repository.remote.LoginRemoteDSImp
 import com.example.solutionx.features.login.domain.repository.LoginRepository
@@ -22,16 +22,12 @@ import dagger.hilt.android.components.ViewModelComponent
 internal object LoginDi {
 
     @Provides
-    fun provideLoginDataStore(context: Context): LoginDataStorePreferences {
-        return LoginDataStorePreferences(context)
-    }
-    @Provides
     fun provideRemoteDS(apiServices: ApiServices):LoginRemoteDS{
         return LoginRemoteDSImp(apiServices)
     }
 
     @Provides
-    fun provideLocalDs(loginDataStore: LoginDataStorePreferences): LoginLocalDS {
+    fun provideLocalDs(loginDataStore: DataStorePreferences): LoginLocalDS {
         return LoginLocalDSImp(loginDataStore)}
 
     @Provides

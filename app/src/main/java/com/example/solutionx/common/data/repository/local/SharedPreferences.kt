@@ -1,6 +1,7 @@
 package com.example.solutionx.common.data.repository.local
 
 import android.content.Context
+import com.example.solutionx.common.domain.remote.LocalDataStoreProvider
 
 class SharedPreferences(context: Context) : LocalDataStoreProvider {
 
