@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.solutionx.features.helper.presentation.MainViewModel" />
+            type="com.example.solutionx.features.selection.presentation.MainViewModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".features.helper.MainActivity">
+        tools:context=".features.selection.MainActivity">
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_host"

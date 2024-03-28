@@ -1,13 +1,10 @@
 package com.example.solutionx.features.login.presenter
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.model.Phone
-import com.example.solutionx.features.login.domain.usecase.LoginWithEmailUseCase
 import com.example.solutionx.features.login.domain.usecase.LoginWithPhoneUseCase
-import com.example.solutionx.features.login.domain.usecase.LoginWithSocialUseCase
 import com.example.solutionx.utils.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -38,16 +35,15 @@ class LoginViewModel @Inject constructor(
 
     private fun loginWithPhoneNumber() {
         viewModelScope.launch(Dispatchers.IO) {
-            val loginRequest = LoginRequest(phone = Phone("0020","100100100"),"123456789"
+            val loginRequest = LoginRequest(
+                phone = Phone(_state.value.countryCode, _state.value.phoneNumber),
+                _state.value.password
             )
-
             loginWithPhoneUseCase.invoke(loginRequest).collect { resource ->
                 when (resource) {
                     is Resources.Loading -> _state.update { it.copy(isLoading = true) }
                     is Resources.Success -> {
-
                         _effect.emit(LoginUiEffect.onClickLoginEffect)
-
                     }
 
                     is Resources.Failure -> {
