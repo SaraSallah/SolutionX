@@ -1,4 +1,4 @@
-package com.example.solutionx.utils
+package com.example.solutionx.common.utils
 
 import android.util.Log
 import io.ktor.http.HttpStatusCode
@@ -40,7 +40,7 @@ fun <T> wrapWithFlow(function: suspend () -> T): Flow<Resources<T>> {
         }
         }
     }
-fun getExceptionType(e :Exception) :SolutionXException{
+fun getExceptionType(e :Exception) : SolutionXException {
     return when(e){
         is IOException -> SolutionXException.NetworkException("Network error occurred")
         is SQLException -> SolutionXException.DatabaseException(e.message)
@@ -49,10 +49,10 @@ fun getExceptionType(e :Exception) :SolutionXException{
     }
 
 }
-fun getResponseType(httpStatusCode: Int):SolutionXException{
+fun getResponseType(httpStatusCode: Int): SolutionXException {
     return when(httpStatusCode){
         ( 502) -> SolutionXException.NetworkException("")
-        else ->SolutionXException.NotFoundException("")
+        else -> SolutionXException.NotFoundException("")
     }
 
 }

@@ -7,7 +7,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.example.solutionx.features.login.data.models.entity.UserEntity
 import com.example.solutionx.features.login.domain.repository.local.LoginLocalDS
-import com.example.solutionx.utils.Constant
+import com.example.solutionx.common.utils.Constant
 import com.google.gson.Gson
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

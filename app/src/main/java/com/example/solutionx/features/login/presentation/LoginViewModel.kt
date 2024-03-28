@@ -1,11 +1,13 @@
-package com.example.solutionx.features.login.presenter
+package com.example.solutionx.features.login.presentation
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.solutionx.common.utils.Logger
+import com.example.solutionx.common.utils.Resources
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.model.Phone
 import com.example.solutionx.features.login.domain.usecase.LoginWithPhoneUseCase
-import com.example.solutionx.utils.Resources
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -44,11 +46,14 @@ class LoginViewModel @Inject constructor(
                     is Resources.Loading -> _state.update { it.copy(isLoading = true) }
                     is Resources.Success -> {
                         _effect.emit(LoginUiEffect.onClickLoginEffect)
+                        _state.update {
+                            it.copy(
+                                userInfo = resource.toData()?.toUserUiState() ?: UserUiState()
+                            )
+                        }
                     }
-
                     is Resources.Failure -> {
                         _state.update { it.copy(isError = true) }
-
                     }
                 }
                 }

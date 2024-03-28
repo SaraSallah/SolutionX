@@ -1,7 +1,7 @@
 package com.example.solutionx.common.di
 
 import com.example.solutionx.common.data.repository.remote.ApiServices
-import com.example.solutionx.utils.Constant
+import com.example.solutionx.common.utils.Constant
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

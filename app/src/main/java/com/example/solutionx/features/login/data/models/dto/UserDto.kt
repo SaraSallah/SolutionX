@@ -3,7 +3,7 @@ package com.example.solutionx.features.login.data.models.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class UserDto(
+ data class UserDto(
     @SerializedName("all_permissions")
     val allPermissions: List<Any?>? = null,
     @SerializedName("birthdate")

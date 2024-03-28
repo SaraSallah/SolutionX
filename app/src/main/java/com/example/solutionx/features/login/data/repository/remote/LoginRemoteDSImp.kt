@@ -5,8 +5,8 @@ import com.example.solutionx.common.data.repository.remote.ApiServices
 import com.example.solutionx.features.login.data.models.dto.LoginDto
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.repository.remote.LoginRemoteDS
-import com.example.solutionx.utils.SolutionXException
-import com.example.solutionx.utils.getResponseType
+import com.example.solutionx.common.utils.SolutionXException
+import com.example.solutionx.common.utils.getResponseType
 import retrofit2.Response
 import javax.inject.Inject
 

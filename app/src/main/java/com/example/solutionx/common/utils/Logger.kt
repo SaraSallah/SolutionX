@@ -1,4 +1,4 @@
-package com.example.solutionx.utils
+package com.example.solutionx.common.utils
 
 import android.os.Environment
 import android.util.Log

@@ -8,6 +8,6 @@
     <fragment
         android:id="@+id/loginFragment"
         tools:layout="@layout/fragment_login"
-        android:name="com.example.solutionx.features.login.presenter.LoginFragment"
+        android:name="com.example.solutionx.features.login.presentation.LoginFragment"
         android:label="LoginFragment" />
 </navigation>

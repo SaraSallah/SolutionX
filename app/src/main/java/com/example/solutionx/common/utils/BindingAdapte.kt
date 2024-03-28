@@ -1,4 +1,4 @@
-package com.example.solutionx.utils
+package com.example.solutionx.common.utils
 
 import android.util.Log
 import android.view.View

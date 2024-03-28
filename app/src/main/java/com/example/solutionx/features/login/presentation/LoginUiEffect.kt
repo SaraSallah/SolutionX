@@ -1,4 +1,4 @@
-package com.example.solutionx.features.login.presenter
+package com.example.solutionx.features.login.presentation
 
 sealed class LoginUiEffect {
      data object onClickLoginEffect : LoginUiEffect()

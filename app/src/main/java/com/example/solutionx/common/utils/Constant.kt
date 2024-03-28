@@ -1,4 +1,4 @@
-package com.example.solutionx.utils
+package com.example.solutionx.common.utils
 
 object Constant {
     const val BASEURL ="https://dev.api.altashirat.solutionplus.net/api/"

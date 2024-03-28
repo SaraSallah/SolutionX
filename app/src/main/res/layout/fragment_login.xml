@@ -6,43 +6,48 @@
     <data>
         <variable
             name="viewModel"
-            type="com.example.solutionx.features.login.presenter.LoginViewModel" />
+            type="com.example.solutionx.features.login.presentation.LoginViewModel" />
         <variable
             name="listener"
-            type="com.example.solutionx.features.login.presenter.LoginInteractionListener" />
+            type="com.example.solutionx.features.login.presentation.LoginInteractionListener" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".features.login.presenter.LoginFragment">
+        tools:context=".features.login.presentation.LoginFragment">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_phone_number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_margin="16dp"
-            android:hint="phoneNumber"
             android:afterTextChanged="@{(text)->viewModel.onPhoneNumberInputChange(text)}"
+            android:hint="phoneNumber"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_country_code"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="country code"
-            android:afterTextChanged="@{(text)->viewModel.onCountryCodeInputChanged(text)}"
+            android:layout_height="80dp"
             android:layout_margin="16dp"
+            android:layout_marginTop="76dp"
+            android:afterTextChanged="@{(text)->viewModel.onCountryCodeInputChanged(text)}"
+            android:hint="country code"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.781"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_phone_number"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/text_phone_number" />
+
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:hint="passsword"
             android:layout_margin="16dp"
             android:afterTextChanged="@{(text)->viewModel.onPasswordInputChanged(text)}"

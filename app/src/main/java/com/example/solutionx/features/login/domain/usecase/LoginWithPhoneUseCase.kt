@@ -4,9 +4,15 @@ import android.util.Log
 import com.example.solutionx.features.login.domain.model.LoginRequest
 import com.example.solutionx.features.login.domain.model.User
 import com.example.solutionx.features.login.domain.repository.LoginRepository
-import com.example.solutionx.utils.Resources
-import com.example.solutionx.utils.wrapWithFlow
+import com.example.solutionx.common.utils.Resources
+import com.example.solutionx.common.utils.SolutionXException
+import com.example.solutionx.common.utils.wrapWithFlow
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class LoginWithPhoneUseCase (
     private val repository: LoginRepository,

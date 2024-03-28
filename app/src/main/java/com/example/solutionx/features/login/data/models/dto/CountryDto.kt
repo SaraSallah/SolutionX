@@ -3,7 +3,7 @@ package com.example.solutionx.features.login.data.models.dto
 
 import com.google.gson.annotations.SerializedName
 
-data class CountryDto(
+ data class CountryDto(
     @SerializedName("code")
     val code: String? = null,
     @SerializedName("currency")

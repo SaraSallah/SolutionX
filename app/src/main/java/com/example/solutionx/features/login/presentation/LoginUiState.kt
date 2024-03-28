@@ -1,7 +1,6 @@
-package com.example.solutionx.features.login.presenter
+package com.example.solutionx.features.login.presentation
 
 import com.example.solutionx.features.login.domain.model.User
-import com.example.solutionx.utils.SolutionXException
 
 data class LoginUiState(
     val isLoading: Boolean = false,
@@ -17,7 +16,6 @@ data class UserUiState(
     val name: String? = "",
     val email: String? = "",
     val password: String? = "",
-    val age: Int? = 0,
 )
 
 fun User.toUserUiState()=UserUiState(
@@ -25,5 +23,4 @@ fun User.toUserUiState()=UserUiState(
     name = name,
     email = email ,
     password = password ,
-    age = age
 )
